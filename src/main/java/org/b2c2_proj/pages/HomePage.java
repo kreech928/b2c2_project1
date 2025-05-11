@@ -15,5 +15,7 @@ public class HomePage {
         this.navBar = new NavBar(driver);
     }
 
-
+    public NavBar getNavBar() {
+        return navBar;
+    }
 }
