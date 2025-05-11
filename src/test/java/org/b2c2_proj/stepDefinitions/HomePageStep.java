@@ -1,6 +1,7 @@
 package org.b2c2_proj.stepDefinitions;
 
 import io.cucumber.java.en.*;
+import org.b2c2_proj.utils.WaitHelper;
 import org.openqa.selenium.WebDriver;
 import org.b2c2_proj.pages.HomePage;
 import org.b2c2_proj.utils.WebDriverFactory;
@@ -13,10 +14,12 @@ public class HomePageStep {
 
     WebDriver driver = WebDriverFactory.getDriver();
     HomePage homePage = new HomePage(driver);
+    WaitHelper wait = new WaitHelper(driver, 1);
 
     @Given("User opens home page")
     public void user_opens_home_page() {
         driver.get(HOME_PAGE_URL);
+        wait.forPageLoad();
         System.out.println(">>>HOMEPAGE OPENED.");
     }
 
