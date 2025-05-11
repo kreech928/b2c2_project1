@@ -8,14 +8,12 @@ import java.util.List;
 
 public class HomePage {
     WebDriver driver;
-
-    private NavBar navBar;
+    NavBar navBar;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
+        this.navBar = new NavBar(driver);
     }
 
-    public NavBar getNavBar() {
-        return navBar;
-    }
+
 }
