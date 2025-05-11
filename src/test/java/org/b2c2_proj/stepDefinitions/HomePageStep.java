@@ -23,7 +23,7 @@ public class HomePageStep {
     @When("Print content of navbox")
     public void print_content_of_navbox() {
         System.out.println(">>>LIST");
-        homePage.printList();
+        homePage.getNavBar().printListOfElements();
     }
 
     @Then("Check content of navbox")
