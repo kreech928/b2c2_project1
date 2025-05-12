@@ -1,6 +1,14 @@
-Feature: HomePage
+Feature: Candidate navigating through the main sections of the website
 
-  Scenario: HomePage navbox verification
-    Given User opens home page
-    When Print content of navbox
-    Then Check content of navbox
+  Background:
+    Given User is on the home page
+
+  Scenario: User checks the existence of the contact form
+    When User goes to the 'contact' page
+    Then Contact page contain contact form
+
+    Scenario: User checks the existence of offers for Zielona Gora
+      When User goes to the career page and filters the offers
+      Then User sees filtered job offers
+
+
