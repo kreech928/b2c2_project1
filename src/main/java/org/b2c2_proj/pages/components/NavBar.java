@@ -1,4 +1,4 @@
-package org.b2c2_proj.pages;
+package org.b2c2_proj.pages.components;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +11,7 @@ import java.util.List;
 
 public class NavBar {
     WebDriver driver;
+
     @FindBy(className = "nav-menu_inner_wrap")
     WebElement navbarMenu;
     @FindBy(className = "brand")
