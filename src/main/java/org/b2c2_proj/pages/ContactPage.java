@@ -18,6 +18,11 @@ public class ContactPage {
     WebElement logo;
     @FindBy(tagName = "h1")
     WebElement title;
+
+    @FindBy(id = "w-dropdown-toggle-5")
+    WebElement teamsToContactDropdown;
+    @FindBy(id = "w-dropdown-list-5")
+    WebElement listOfItemsForTeamsToContactDropdown;
     @FindBy(id = "Name")
     WebElement nameInput;
     @FindBy(id = "email")
@@ -36,27 +41,38 @@ public class ContactPage {
     WebElement listOfItemsForCurrentMonthTradingVolumeDropdown;
     @FindBy(id = "Message")
     WebElement optionalMessageTextarea;
+    @FindBy(className = "form-submit-2")
+    WebElement submitButton;
 
     public ContactPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void clickLogo() {
-        logo.click();
-    }
 
     public void fillContactForm() {
+        teamsToContactDropdown.click();
+        listOfItemsForTeamsToContactDropdown.findElements(By.tagName("a")).get(4).click();
 
         nameInput.sendKeys("John Doe");
         emailInput.sendKeys("lg@test.test");
         companyNameInput.sendKeys("B2C2");
         positionAtCompanyInput.sendKeys("QA Engineer");
         optionalMessageTextarea.sendKeys("Hello World!");
+
         descriptionOfOrganizationDropdown.click();
         listOfItemsForDescriptionOfOrganizationDropdown.findElements(By.tagName("a")).get(1).click();
+
         currentMonthTradingVolumeDropdown.click();
         listOfItemsForCurrentMonthTradingVolumeDropdown.findElements(By.tagName("a")).get(2).click();
+    }
+
+    public void clickLogo() {
+        logo.click();
+    }
+
+    public void clickSubmitButton() {
+        submitButton.click();
     }
 
     public String getUrl() {
