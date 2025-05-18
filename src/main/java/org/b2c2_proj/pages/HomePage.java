@@ -2,9 +2,6 @@ package org.b2c2_proj.pages;
 
 import org.b2c2_proj.pages.components.NavBar;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
 
 public class HomePage {
     final String url = "https://www.b2c2.com/";
@@ -19,7 +16,6 @@ public class HomePage {
     public String getUrl() {
         return url;
     }
-
 
     public NavBar getNavBar() {
         return navBar;
