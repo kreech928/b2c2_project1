@@ -39,4 +39,18 @@ public class WaitHelper {
         wait.until(webDriver -> ((JavascriptExecutor) webDriver)
                 .executeScript("return document.readyState").equals("complete"));
     }
+
+    public String handleAlertIfPresent() {
+        try {
+            Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+            System.out.println(">>> Alert text: " + alert.getText());
+            String alertText = alert.getText();
+
+            alert.accept();
+            return alertText;
+        } catch (TimeoutException e) {
+            System.out.println(">>> No alert present");
+            return null;
+        }
+    }
 }
