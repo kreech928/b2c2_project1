@@ -1,0 +1,28 @@
+PROJECT DESCRIPTION
+----------------
+This project contains automated UI tests written in Java using:
+- Selenium WebDriver
+- Cucumber (BDD)
+- JUnit
+- Page Object Model
+- WebDriverManager
+- Maven
+
+The tests are for a job offer form in a React-based application embedded in an iframe.
+
+REQUIREMENTS
+------------
+- Java JDK 17+
+- Maven 3.x
+- Chrome browser (or other if configured)
+- ChromeDriver (automatically managed by WebDriverManager)
+
+RUNNING TESTS
+----------------------
+From the terminal:
+
+Building and running:
+-mvn clean test
+
+From the IDE (e.g. IntelliJ):
+- Run the `TestRunner.java` class as a JUnit test
