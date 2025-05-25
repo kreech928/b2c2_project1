@@ -1,45 +1,38 @@
 package org.b2c2_proj.pages;
 
+import org.b2c2_proj.pages.components.GreenHouseAppFrame;
 import org.b2c2_proj.pages.components.NavBar;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
+import org.openqa.selenium.support.PageFactory;
 
 public class CareersPage {
     final String url = "https://www.b2c2.com/join-b2c2/careers";
 
     WebDriver driver;
     NavBar navBar;
+    GreenHouseAppFrame dynamicCareerSection;
 
     @FindBy(tagName = "h1")
     WebElement title;
-    @FindBy(className = "select")
-    WebElement selectOfficeContainer;
-    @FindBy(className="job-posts--table")
-    WebElement jobPostsTable;
 
     public CareersPage(WebDriver driver) {
-        this.driver = driver;
         this.navBar = new NavBar(driver);
+        this.dynamicCareerSection = new GreenHouseAppFrame();
+
+        PageFactory.initElements(driver, this);
     }
 
-    public void selectOffice(String localisation) {
-        selectOfficeContainer.click();
-        selectOfficeContainer.sendKeys(localisation);
-        selectOfficeContainer.sendKeys(Keys.ENTER);
+    public GreenHouseAppFrame getCareerSection() {
+        return dynamicCareerSection;
+    }
+    public void sendLocationFilter(String location, WebDriver driver) {
+        getCareerSection().sendInputToOfficeContainer(location, driver);
     }
 
-    public WebElement getJobPost(int index) {
-        return getJobPosts().get(index);
-    }
-
-    public List<WebElement> getJobPosts() {
-         WebElement tableContent = jobPostsTable.findElement(By.tagName("tbody"));
-         return tableContent.findElements(By.tagName("a"));
+    public int getCountOfJobPosts(WebDriver driver) {
+        return getCareerSection().getSizeOfJobsPostsList(driver);
     }
 
     public String getUrl() {
