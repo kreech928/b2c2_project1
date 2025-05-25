@@ -40,7 +40,7 @@ public class WaitHelper {
                 .executeScript("return document.readyState").equals("complete"));
     }
 
-    public String handleAlertIfPresent() {
+    public String forAlertIsPresent() {
         try {
             Alert alert = wait.until(ExpectedConditions.alertIsPresent());
             System.out.println(">>> Alert text: " + alert.getText());
@@ -53,4 +53,18 @@ public class WaitHelper {
             return null;
         }
     }
+
+    public void forUpdateOfElement(WebElement element) {
+        String oldHtml = element.getAttribute("outerHTML");
+
+        wait.until(driver -> {
+            try {
+                String newHtml = element.getAttribute("outerHTML");
+                return !newHtml.equals(oldHtml);
+            } catch (StaleElementReferenceException e) {
+                return true;
+            }
+        });
+    }
+
 }
