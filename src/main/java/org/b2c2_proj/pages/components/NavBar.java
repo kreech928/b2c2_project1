@@ -56,14 +56,6 @@ public class NavBar {
     }
 
 
-    //tempMethod
-    public void printListOfElements() {
-        for (WebElement element : getNavbarItems()) {
-            System.out.println(element.getText());
-        }
-    }
-
-    //If needed add text driven method
     public void clickDropdownItemByIndex(int navboxItemIndex, int dropdownItemIndex) {
         Actions action = new Actions(driver);
         WebElement selectedDropdown = getNavbarItems().get(navboxItemIndex);
@@ -74,18 +66,7 @@ public class NavBar {
         dropdownItems.get(dropdownItemIndex).click();
     }
 
-    //tempMethod
-    public void printDropdownItemByIndex(int navboxItemIndex) {
-        Actions action = new Actions(driver);
-        WebElement selectedDropdown = getNavbarItems().get(navboxItemIndex);
-        List<WebElement> dropdownItems;
-
-        System.out.println(selectedDropdown.getText());
-
-        action.moveToElement(selectedDropdown).perform();
-        dropdownItems = selectedDropdown.findElements(By.className("inner-dropdown"));
-        for (WebElement dropdownItem : dropdownItems) {
-            System.out.println(dropdownItem.getText());
-        }
+    public void clickCareer() {
+        clickDropdownItemByIndex(4, 1);
     }
 }
