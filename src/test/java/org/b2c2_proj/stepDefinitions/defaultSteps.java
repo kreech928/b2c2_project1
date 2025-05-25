@@ -17,7 +17,7 @@ public class defaultSteps {
     ContactPage contactPage = new ContactPage(driver);
     CareersPage careersPage = new CareersPage(driver);
 
-    WaitHelper wait = new WaitHelper(driver, 1);
+    WaitHelper wait = new WaitHelper(driver, 5);
 
     @Given("User is on the home page")
     public void user_is_on_the_home_page() {
